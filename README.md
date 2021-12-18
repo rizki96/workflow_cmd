@@ -13,9 +13,9 @@
 ## Domain Specific Language
 
 Examples : 
-    - example 1
+- example 1
 
 ## Template Rendering
 
 Examples :
-    - example 1
+- example 1
