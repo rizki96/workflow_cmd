@@ -7,8 +7,8 @@
 
 ## Download Binary Executable
 
-* Windows10
-* MacOSX
+- Windows10
+- MacOSX
 
 ## Domain Specific Language
 
