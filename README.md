@@ -4,3 +4,5 @@
 
 ## Download Executable
 
+* MacOSX
+* Windows10
