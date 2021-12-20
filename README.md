@@ -16,7 +16,10 @@ Windows8 / Windows10:
 - > set CC=gcc
 - > mix deps.get
 - > mix release.win
-- > ./_build/prod/rel/bakeware/workflow_cmd
+- Copy the binary to C:\ directory:
+- > mkdir c:\workflow
+- > copy _build/prod/rel/bakeware/workflow_cmd C:\workflow
+- > C:\workflow\workflow_cmd
 
 MacOSX:
 - install brew
