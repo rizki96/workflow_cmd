@@ -7,11 +7,24 @@
 - [ ] database command and query
 
 ## Build From Source
-- install erlang >= 22.x and elixir >= 1.12.x
+Windows8 / Windows10:
+- install chocolatey
+- > choco install -y elixir git zstandard make mingw
+- > git clone https://github.com/rizki96/workflow_cmd.git
+- > cd workflow_cmd
+- > set MAKE=make
+- > set CC=gcc
+- > mix deps.get
+- > mix release.win
+- > ./_build/prod/rel/bakeware/workflow_cmd
+
+MacOSX:
+- install brew
+- > brew install elixir git zstd
 - > git clone https://github.com/rizki96/workflow_cmd.git
 - > cd workflow_cmd
 - > mix deps.get
-- > mix build.release
+- > MIX_ENV=prod mix release.mac
 - > ./_build/prod/rel/bakeware/workflow_cmd
 
 ## Download Binary Executable

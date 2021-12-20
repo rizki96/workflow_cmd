@@ -35,7 +35,8 @@ defmodule WorkflowCmd.MixProject do
 
   defp aliases do
     [
-      "build.release": ["cmd rm -fr _build", "cmd mix release"]
+      "release.mac": ["cmd rm -fr _build", "cmd mix release"],
+      "release.win": ["cmd rd /s /q _build", "cmd mix release"],
     ]
   end
 
