@@ -16,15 +16,14 @@
 
 ## Download Binary Executable
 
-- Windows10
-- MacOSX
+- [Windows10](https://github.com/rizki96/workflow_cmd/releases/download/v0.1.0/workflow_cmd-win10.zip)
+- [MacOSX (Intel)](https://github.com/rizki96/workflow_cmd/releases/download/v0.1.0/workflow_cmd-macintel.zip)
 
 ## Domain Specific Language
 
 Examples : 
-- example 1
+- https://github.com/rizki96/workflow_dsl/tree/master/examples
 
 ## Template Rendering
 
-Examples :
-- example 1
+- TODO
