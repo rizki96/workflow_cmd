@@ -35,7 +35,7 @@ MacOSX:
 - [Windows10](https://github.com/rizki96/workflow_cmd/releases/download/v0.1.0/workflow_cmd-win10.zip)
 - MacOSX (M1 Rosetta) :
     - > brew install rizki96/wffw/workflow_cmd
-    - > /usr/local/Cellar/workflow_cmd/0.1.0/bin/workflow_cmd
+    - > workflow_cmd
 
 ## Domain Specific Language
 
