@@ -1,11 +1,12 @@
 defmodule WorkflowCmd.MixProject do
   use Mix.Project
   @app :workflow_cmd
+  @version "0.1.0"
 
   def project do
     [
       app: @app,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -35,7 +36,7 @@ defmodule WorkflowCmd.MixProject do
 
   defp aliases do
     [
-      "release.mac": ["cmd rm -fr _build", "cmd mix release"],
+      "release.mac": ["cmd rm -fr _build", "cmd mix release", "cmd tar czvf #{@app}-#{@version}.tar.gz -C _build/prod/rel/bakeware/ #{@app}"],
       "release.win": ["cmd rd /s /q _build", "cmd mix release"],
     ]
   end

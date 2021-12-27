@@ -7,7 +7,7 @@ defmodule WorkflowCmd do
   def main([]) do
     IO.puts("\nRunning the JSON workflow DSL via command-line
 \nCommand: workflow_cmd <json workflow file path / URL> [--verbose]
-\nEx.: workflow_cmd https://raw.githubusercontent.com/rizki96/workflow_dsl/master/examples/workflow3.json --verbose
+Ex.: > workflow_cmd https://raw.githubusercontent.com/rizki96/workflow_dsl/master/examples/workflow3.json --verbose
 ")
   end
 

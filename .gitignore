@@ -26,3 +26,5 @@ workflow_cmd-*.tar
 /tmp/
 
 .DS_Store
+
+**/*.tar.gz
