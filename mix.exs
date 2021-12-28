@@ -20,7 +20,7 @@ defmodule WorkflowCmd.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {WorkflowCmd, []}
+      mod: (if Mix.env() == :test, do: {WorkflowCmd.Application, []}, else: {WorkflowCmd, []})
     ]
   end
 
@@ -38,7 +38,7 @@ defmodule WorkflowCmd.MixProject do
   defp aliases do
     [
       "release.mac": ["cmd rm -fr _build", "cmd mix release", "cmd tar czvf #{@app}-#{@version}.tar.gz -C _build/prod/rel/bakeware/ #{@app}"],
-      "release.win": ["cmd rd /s /q _build", "cmd mix release"],
+      "release.win": ["cmd rd /s /q _build", "cmd mix release"], # TODO: release.win
     ]
   end
 

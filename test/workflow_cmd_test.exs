@@ -1,12 +1,14 @@
 defmodule WorkflowCmdTest do
   use ExUnit.Case
-  #doctest WorkflowCmd
+  doctest WorkflowCmd
 
   require Logger
   alias Mix.Tasks.Wf
 
   test "execute workflow examples" do
-    args = ["./examples/workflow1.json", "--verbose"]
-    Wf.Run.run(args)
+    for n <- 1..1 do
+      args = ["./examples/workflow#{n}.json", "--verbose"]
+      Wf.Run.run(args)
+    end
   end
 end
