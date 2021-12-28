@@ -30,6 +30,7 @@ defmodule WorkflowCmd.MixProject do
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:workflow_dsl, git: "https://github.com/rizki96/workflow_dsl.git"},
+      {:solid, "~> 0.10"},
       {:bakeware, "~> 0.2.2", runtime: false}
     ]
   end

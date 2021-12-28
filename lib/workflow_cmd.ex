@@ -1,5 +1,6 @@
 defmodule WorkflowCmd do
   use Bakeware.Script
+  # use Application
 
   alias Mix.Tasks.Wf
 
@@ -15,4 +16,9 @@ Ex.: > workflow_cmd https://raw.githubusercontent.com/rizki96/workflow_dsl/maste
     Wf.Run.run(args)
     0
   end
+
+  # @impl true
+  # def start(_type, _args) do
+  #   {:ok, self()}
+  # end
 end

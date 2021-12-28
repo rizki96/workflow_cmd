@@ -13,6 +13,7 @@
   "nimble_parsec": {:hex, :nimble_parsec, "1.2.0", "b44d75e2a6542dcb6acf5d71c32c74ca88960421b6874777f79153bbbbd7dccc", [:mix], [], "hexpm", "52b2871a7515a5ac49b00f214e4165a40724cf99798d8e4a65e4fd64ebd002c1"},
   "nimble_pool": {:hex, :nimble_pool, "0.2.4", "1db8e9f8a53d967d595e0b32a17030cdb6c0dc4a451b8ac787bf601d3f7704c3", [:mix], [], "hexpm", "367e8071e137b787764e6a9992ccb57b276dc2282535f767a07d881951ebeac6"},
   "req": {:git, "https://github.com/wojtekmach/req.git", "7e36753f158d89315854128e74cb2dd8d1f153a8", []},
+  "solid": {:hex, :solid, "0.10.0", "7ac941a9a617c1157fa7382627dc925c91ae776822344d0f195c4260efb53674", [:mix], [{:nimble_parsec, "~> 1.0", [hex: :nimble_parsec, repo: "hexpm", optional: false]}], "hexpm", "1a1ce7be2536ed7f9ca4db3527fc29da550eacde3d7a037481a740a699ceea55"},
   "telemetry": {:hex, :telemetry, "1.0.0", "0f453a102cdf13d506b7c0ab158324c337c41f1cc7548f0bc0e130bbf0ae9452", [:rebar3], [], "hexpm", "73bc09fa59b4a0284efb4624335583c528e07ec9ae76aca96ea0673850aec57a"},
   "workflow_dsl": {:git, "https://github.com/rizki96/workflow_dsl.git", "c4920282c0ca8a30e57823f88e711daa5b4b7f25", []},
 }

@@ -4,7 +4,7 @@
 - [x] single binary executable
 - [x] domain specific language based on Google Cloud Workflows
 - [ ] template rendering
-- [ ] database command and query
+- [ ] docker support
 
 ## Build From Source
 Windows8 / Windows10:

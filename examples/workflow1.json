@@ -1,1 +1,33 @@
-["TODO"]
+[
+    {
+        "step1": {
+          "assign": [
+            {
+                "template_var1": 1
+            },
+            {
+                "template_var2": "testing 123"
+            }
+          ]
+        }
+    },
+    {
+        "generateFile": {
+            "call": "template.render",
+            "args": {
+                "template_path": "examples/templates/temp1.tmpl",
+                "output_path": "output/templates/temp1.out"
+            },
+            "result": "rendered_content"
+        }
+    },
+    {
+        "writeFile": {
+            "call": "file.write",
+            "args": {
+                "input_var": "rendered_content",
+                "output_path": "examples/templates/temp1.out"
+            }
+        }
+    }
+]
