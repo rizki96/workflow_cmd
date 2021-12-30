@@ -38,7 +38,7 @@ defmodule WorkflowDsl.Template do
   defp get_template_result(str) do
     {:ok, template} = Solid.parse(str)
 
-    func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => String.to_atom("render")})
+    func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => :render})
     vars = Storages.list_vars_by(%{"session" => func.session})
       |> Enum.map(fn it -> {it.name, :erlang.binary_to_term(it.value)} end)
       |> Enum.into(%{})

@@ -12,7 +12,7 @@ defmodule WorkflowDsl.File do
     |> Enum.into(%{})
 
     with true <- Map.has_key?(parameters, "input_var"),
-      func <- Storages.get_last_function_by(%{"module" => __MODULE__, "name" => String.to_atom("write")}),
+      func <- Storages.get_last_function_by(%{"module" => __MODULE__, "name" => :write}),
       var <- Storages.get_var_by(%{"session" => func.session, "name" => parameters["input_var"]}),
       true <- Map.has_key?(parameters, "output_path"),
       :ok <- File.mkdir_p(Path.dirname(parameters["output_path"])) do

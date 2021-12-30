@@ -5,6 +5,8 @@
 - [x] domain specific language based on Google Cloud Workflows
 - [x] template rendering
 - [ ] docker support
+- [ ] personal chatbot
+- [ ] whatsapp support
 
 ## Build From Source
 Windows8 / Windows10:
@@ -39,9 +41,14 @@ MacOSX:
 
 ## Domain Specific Language
 
-Examples : 
+Examples :
 - https://github.com/rizki96/workflow_dsl/tree/master/examples
 
 ## Template Rendering
 
-- TODO
+Example :
+- https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow1.json
+
+## Docker Support
+
+TODO
