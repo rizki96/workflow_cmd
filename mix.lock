@@ -15,5 +15,5 @@
   "req": {:git, "https://github.com/wojtekmach/req.git", "7e36753f158d89315854128e74cb2dd8d1f153a8", []},
   "solid": {:hex, :solid, "0.10.0", "7ac941a9a617c1157fa7382627dc925c91ae776822344d0f195c4260efb53674", [:mix], [{:nimble_parsec, "~> 1.0", [hex: :nimble_parsec, repo: "hexpm", optional: false]}], "hexpm", "1a1ce7be2536ed7f9ca4db3527fc29da550eacde3d7a037481a740a699ceea55"},
   "telemetry": {:hex, :telemetry, "1.0.0", "0f453a102cdf13d506b7c0ab158324c337c41f1cc7548f0bc0e130bbf0ae9452", [:rebar3], [], "hexpm", "73bc09fa59b4a0284efb4624335583c528e07ec9ae76aca96ea0673850aec57a"},
-  "workflow_dsl": {:git, "https://github.com/rizki96/workflow_dsl.git", "c4920282c0ca8a30e57823f88e711daa5b4b7f25", []},
+  "workflow_dsl": {:git, "https://github.com/rizki96/workflow_dsl.git", "071a2e835de404a43c9b462703ecdfdf0b7163b2", []},
 }

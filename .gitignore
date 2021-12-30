@@ -28,3 +28,5 @@ workflow_cmd-*.tar
 .DS_Store
 
 **/*.tar.gz
+
+/output/
