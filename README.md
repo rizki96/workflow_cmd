@@ -42,13 +42,13 @@ MacOSX:
 
 ## Domain Specific Language
 
-Based on [`Google Cloud Workflows`](https://cloud.google.com/workflows/docs/reference/syntax)
+Based on [`Google Cloud Workflows`](https://cloud.google.com/workflows/docs/reference/syntax).
 Examples :
 - https://github.com/rizki96/workflow_dsl/tree/master/examples
 
 ## Template Rendering
 
-Using [Liquid](https://shopify.github.io/liquid/) template
+Using [Liquid](https://shopify.github.io/liquid/) template.
 Example :
 - https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow1.json
 
