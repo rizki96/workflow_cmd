@@ -6,8 +6,8 @@
 - [x] template rendering
 - [ ] docker support
 - [ ] command prompt
-- [ ] personal chatbot
-- [ ] whatsapp support
+- [ ] whatsapp chatbot
+- [ ] whatsapp sender
 
 ## Build From Source
 Windows8 / Windows10:
