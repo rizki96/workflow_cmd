@@ -3,7 +3,7 @@
 [Workflow DSL](https://github.com/rizki96/workflow_dsl) running as a binary command line, with features : 
 - [x] single binary executable
 - [x] domain specific language based on Google Cloud Workflows
-- [ ] template rendering
+- [x] template rendering
 - [ ] docker support
 
 ## Build From Source
