@@ -1,7 +1,7 @@
 defmodule WorkflowCmd.MixProject do
   use Mix.Project
   @app :workflow_cmd
-  @version "0.1.0"
+  @version "0.2.0"
 
   def project do
     [
@@ -20,7 +20,7 @@ defmodule WorkflowCmd.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: (if Mix.env() == :test, do: {WorkflowCmd.Application, []}, else: {WorkflowCmd, []})
+      mod: (if Mix.env() == :test or Mix.env() == :dev, do: {WorkflowCmd.Application, []}, else: {WorkflowCmd, []})
     ]
   end
 
@@ -31,6 +31,7 @@ defmodule WorkflowCmd.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:workflow_dsl, git: "https://github.com/rizki96/workflow_dsl.git"},
       {:solid, "~> 0.10"},
+      {:docker, "~> 0.4.0"},
       {:bakeware, "~> 0.2.2", runtime: false}
     ]
   end
