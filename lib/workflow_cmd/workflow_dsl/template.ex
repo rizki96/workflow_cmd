@@ -2,12 +2,14 @@ defmodule WorkflowDsl.Template do
 
   require Logger
   alias WorkflowDsl.Storages
+  alias WorkflowDsl.Lang
 
   def render(params) do
     Logger.debug("execute :render #{inspect params}")
 
+    func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => :render})
     parameters = Enum.map(params, fn [k,v] ->
-      {k, v}
+      {k, Lang.eval(func.session, v)}
     end)
     |> Enum.into(%{})
 
