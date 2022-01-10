@@ -52,6 +52,6 @@ Example :
 
 ## Docker Support
 
-Install Docker Desktop in your Laptop / PC.
+Requirement: Install Docker Desktop in your Laptop / PC.
 Example :
 - [Docker Hello World](https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow2.json)
