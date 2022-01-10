@@ -1,6 +1,6 @@
 [
     {
-        "step1": {
+        "setupVars": {
           "assign": [
             {
                 "template_var1": 1

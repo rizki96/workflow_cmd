@@ -4,10 +4,8 @@
 - [x] single binary executable
 - [x] domain specific language based on Google Cloud Workflows
 - [x] template rendering
-- [ ] docker support
+- [x] docker support
 - [ ] command prompt
-- [ ] whatsapp chatbot
-- [ ] whatsapp sender
 
 ## Build From Source
 Windows8 / Windows10:
@@ -54,4 +52,6 @@ Example :
 
 ## Docker Support
 
-TODO
+Install Docker Desktop in your Laptop / PC.
+Example :
+- [Docker Hello World](https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow2.json)
