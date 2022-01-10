@@ -48,7 +48,7 @@ Examples :
 
 Using [Liquid](https://shopify.github.io/liquid/) template.
 Example :
-- https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow1.json
+- https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow1.json
 
 ## Docker Support
 
