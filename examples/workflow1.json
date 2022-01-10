@@ -25,7 +25,7 @@
         "writeFile": {
             "call": "file.write",
             "args": {
-                "input": "${rendered_content}",
+                "input_string": "${rendered_content}",
                 "output_path": "output/templates/write1.out"
             }
         }
