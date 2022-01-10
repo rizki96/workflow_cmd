@@ -33,7 +33,6 @@ MacOSX:
 
 ## Download Binary Executable
 
-- [Windows10](https://github.com/rizki96/workflow_cmd/releases/download/v0.1.0/workflow_cmd-win10.zip)
 - MacOSX (M1 Rosetta) :
     - > brew install rizki96/wffw/workflow_cmd
     - > workflow_cmd
