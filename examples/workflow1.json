@@ -15,7 +15,7 @@
         "generateFile": {
             "call": "template.render",
             "args": {
-                "template_path": "examples/templates/temp1.tmpl",
+                "template_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/templates/temp1.tmpl",
                 "output_path": "output/templates/temp1.out"
             },
             "result": "rendered_content"

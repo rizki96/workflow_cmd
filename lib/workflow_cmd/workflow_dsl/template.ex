@@ -33,6 +33,17 @@ defmodule WorkflowDsl.Template do
           end
         end
         {:ok, result}
+      Map.has_key?(parameters, "template_url") ->
+        if String.starts_with?(parameters["template_url"], ["http://", "https://"]) do
+          {:ok, content} = Req.request(:get, parameters["template_url"])
+          result = get_template_result(content.body)
+          if Map.has_key?(parameters, "output_path") do
+            with :ok <- File.mkdir_p(Path.dirname(parameters["output_path"])) do
+              File.write(parameters["output_path"], result)
+            end
+          end
+          {:ok, result}
+        end
       true -> {:error, nil}
     end
   end
