@@ -41,7 +41,7 @@
         "writeLogs": {
             "call": "file.write",
             "args": {
-                "input": "${hello_world_logs.stdout}",
+                "input_string": "${hello_world_logs.stdout}",
                 "output_path": "output/templates/docker_logs.out"
             }
         }
