@@ -54,4 +54,4 @@ Example :
 
 Requirement: Install Docker Desktop in your Laptop / PC.
 Example :
-- [Docker Hello World](https://github.com/rizki96/workflow_cmd/blob/master/examples/workflow2.json)
+- [Docker Hello World https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow2.json](https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow2.json)
