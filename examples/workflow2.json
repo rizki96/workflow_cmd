@@ -42,7 +42,7 @@
             "call": "file.write",
             "args": {
                 "input_string": "${hello_world_logs.stdout}",
-                "output_path": "output/templates/docker_logs.out"
+                "output_path": "output/workflow2/docker_logs.out"
             }
         }
     }
