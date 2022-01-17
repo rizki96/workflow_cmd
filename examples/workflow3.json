@@ -1,0 +1,69 @@
+[
+    {
+        "define_var": {
+            "call": "var.write",
+            "args": {
+                "input_path": "examples/workflow3/contacts.csv",
+                "read_as": "csv"
+            },
+            "result": "array_var"
+        }
+    },
+    {
+        "define": {
+            "assign": [
+                {
+                    "array": "${array_var.name}"
+                },
+                {
+                    "name": "${array[i]}"
+                },
+                {
+                    "i": 0
+                }
+            ]
+        }
+    },
+    {
+        "check_condition": {
+            "switch": [
+                {
+                "condition": "${len(array) > i}",
+                "next": "iterate"
+                }
+            ],
+            "next": "exit_loop"
+        }
+    },
+    {
+        "iterate": {
+            "assign": [
+                {
+                "name": "${array[i]}"
+                },
+                {
+                "i": "${i+1}"
+                }
+            ],
+            "next": "write_message"
+        }
+    },
+    {
+        "write_message": {
+            "call": "template.render",
+            "args": {
+                "template_path": "examples/workflow3/message.tmpl",
+                "output_path": "${\"output/workflow3/message\" + string(i) + \".out\"}"
+            },
+            "result": "rendered_content",
+            "next": "check_condition"
+        }
+    },
+    {
+        "exit_loop": {
+            "return": {
+                "last_index": "${i}"
+            }
+        }
+    }
+]
