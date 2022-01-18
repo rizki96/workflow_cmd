@@ -50,6 +50,7 @@ Examples :
 Using [Liquid](https://shopify.github.io/liquid/) template.
 Example :
 - https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow1.json
+- [Sending Email Blast https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow3.json](https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow3.json)
 
 ## Docker Support
 
