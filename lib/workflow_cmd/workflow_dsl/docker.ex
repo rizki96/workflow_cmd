@@ -308,7 +308,9 @@ defmodule WorkflowDsl.Docker do
   end
 
   defp start_container(id) do
-    Docker.Containers.start(id)
+    # Docker.Containers.start(id)
+    Docker.Client.post("/containers/#{id}/start", %{},
+      opts: [adapter: [recv_timeout: @one_minute]])
   end
 
   defp delete_container(id, image) do
