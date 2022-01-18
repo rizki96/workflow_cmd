@@ -30,3 +30,5 @@ workflow_cmd-*.tar
 **/*.tar.gz
 
 /output/
+
+/examples/password.json

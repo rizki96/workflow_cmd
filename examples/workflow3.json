@@ -1,5 +1,15 @@
 [
     {
+        "define_password": {
+          "call": "var.write",
+          "args": {
+            "input_path": "examples/password.json",
+            "read_as": "json"
+          },
+          "result": "password_storage"
+        }
+      },
+      {
         "define_var": {
             "call": "var.write",
             "args": {
@@ -16,10 +26,16 @@
                     "array": "${array_var.name}"
                 },
                 {
+                    "i": 0
+                },
+                {
                     "name": "${array[i]}"
                 },
                 {
-                    "i": 0
+                    "emails": "${array_var.email}"
+                },
+                {
+                    "email": "${emails[i]}"
                 }
             ]
         }
@@ -39,10 +55,13 @@
         "iterate": {
             "assign": [
                 {
-                "name": "${array[i]}"
+                    "name": "${array[i]}"
                 },
                 {
-                "i": "${i+1}"
+                    "email": "${emails[i]}"
+                },
+                {
+                    "i": "${i+1}"
                 }
             ],
             "next": "write_message"
@@ -56,7 +75,36 @@
                 "output_path": "${\"output/workflow3/message\" + string(i) + \".out\"}"
             },
             "result": "rendered_content",
-            "next": "check_condition"
+            "next": "write_html"
+        }
+    },
+    {
+        "write_html": {
+            "call": "template.render",
+            "args": {
+                "template_path": "examples/workflow3/message.html.tmpl",
+                "output_path": "${\"output/workflow3/message\" + string(i) + \".html\"}"
+            },
+            "result": "rendered_html",
+            "next": "send_email"
+        }
+    },
+    {
+        "send_email": {
+          "call": "smtp.send",
+          "args": {
+              "relay": "smtp.gmail.com",
+              "username": "wfreceiver@gmail.com",
+              "password": "${password_storage.gmail}",
+              "port": 587,
+              "tls": "always",
+              "subject": "This is a test",
+              "from": "wfreceiver@gmail.com",
+              "to": "${email}",
+              "text": "${rendered_content}",
+              "html": "${rendered_html}"
+          },
+          "next": "check_condition"
         }
     },
     {
