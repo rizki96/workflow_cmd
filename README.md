@@ -57,3 +57,4 @@ Example :
 Requirement: Install [Docker Desktop](https://www.docker.com/products/docker-desktop) in your Laptop / PC.
 Example :
 - [Docker Hello World https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow2.json](https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow2.json)
+- [Sending Whatsapp Blast https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow3.json](https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4.json)
