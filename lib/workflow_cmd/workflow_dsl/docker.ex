@@ -133,6 +133,50 @@ defmodule WorkflowDsl.Docker do
     Logger.debug("execute :destroy result: #{inspect result}")
   end
 
+  def compose(params) do
+    Logger.debug("execute :compose #{inspect params}")
+
+    func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => :compose})
+    parameters = Enum.map(params, fn [k,v] ->
+      {k, Lang.eval(func.session, v)}
+    end)
+    |> Enum.into(%{})
+
+    config =
+      with true <- Map.has_key?(parameters, "config_path") do
+        parameters["config_path"]
+      else
+        _ -> ""
+      end
+
+    command =
+      with true <- Map.has_key?(parameters, "command") do
+        parameters["command"]
+      else
+        _ -> ""
+      end
+
+    name =
+      with true <- Map.has_key?(parameters, "project_name") do
+        parameters["project_name"]
+      else
+        _ -> ""
+      end
+
+    services =
+      with true <- Map.has_key?(parameters, "service") do
+        Enum.map(eval_args(parameters["service"], :compose), fn it ->
+          {:service, it}
+        end)
+      else
+        _ -> []
+      end |> Enum.into([])
+
+    # Logger.log(:debug, "#{inspect func.module}, #{inspect command}, #{inspect [name: name, compose_path: config] ++ services}")
+    result = apply(String.to_existing_atom("Elixir.DockerCompose"), String.to_existing_atom(command), [[project_name: name, compose_path: config] ++ services])
+    Logger.log(:debug, "#{inspect result}")
+  end
+
   def logs(params) do
     Logger.debug("execute :logs #{inspect params}")
 
@@ -146,7 +190,7 @@ defmodule WorkflowDsl.Docker do
     with true <- Map.has_key?(parameters, "format") do
       parameters["format"]
     else
-      _ -> "map"
+      _ -> "raw"
     end
 
     result =
@@ -155,28 +199,33 @@ defmodule WorkflowDsl.Docker do
         true <- Map.has_key?(parameters, "stderr") do
         logs_container(parameters["id"],
           %{"stdout" => parameters["stdout"],
-          "stderr" => parameters["stderr"]})
+          "stderr" => parameters["stderr"],
+          "format" => format})
       else
         _ ->
           with true <- Map.has_key?(parameters, "stdout") do
             logs_container(parameters["id"],
             %{"stdout" => parameters["stdout"],
-            "stderr" => true})
+            "stderr" => true,
+            "format" => format})
           else
             _ ->
               logs_container(parameters["id"],
               %{"stdout" => true,
-              "stderr" => true})
+              "stderr" => true,
+              "format" => format})
             end
           with true <- Map.has_key?(parameters, "stderr") do
             logs_container(parameters["id"],
             %{"stdout" => true,
-            "stderr" => parameters["stderr"]})
+            "stderr" => parameters["stderr"],
+            "format" => format})
           else
             _ ->
               logs_container(parameters["id"],
               %{"stdout" => true,
-              "stderr" => true})
+              "stderr" => true,
+              "format" => format})
             end
       end
     end
@@ -322,26 +371,36 @@ defmodule WorkflowDsl.Docker do
     Docker.Containers.remove(id)
   end
 
-  defp logs_container(id, %{"stdout" => stdout, "stderr" => stderr}) do
-    "/containers/#{id}/logs?stdout=#{stdout}&stderr=#{stderr}&timestamp=false"
-    |> Docker.Client.get()
-    |> logs_parser(0)
+  defp logs_container(id, %{"stdout" => stdout, "stderr" => stderr, "format" => format}) do
+    if format == "raw" do
+      {content, _} = System.cmd("docker", ["logs", "#{id}"], into: "", stderr_to_stdout: true)
+      [{"stdout", 0, content}, {"stderr", 0, ""}]
+    else
+      "/containers/#{id}/logs?stdout=#{stdout}&stderr=#{stderr}&tail=100"
+      |> Docker.Client.get()
+      |> logs_parser(0)
+    end
   end
 
   defp logs_parser(str, begin) do
-    log_typ =
-    case binary_part(str, begin + 0, 1) do
-      <<1>> -> "stdout"
-      <<2>> -> "stderr"
-    end
+    case str do
+      nil -> [{"stdout", 0, ""}, {"stderr", 0, ""}]
+      "" -> [{"stdout", 0, ""}, {"stderr", 0, ""}]
+      _ ->
+        log_typ =
+          case binary_part(str, begin + 0, 1) do
+            <<1>> -> "stdout"
+            <<2>> -> "stderr"
+          end
 
-    #Logger.debug("log_type: #{inspect binary_part(str, begin + 4, 4)}")
-    len = :binary.decode_unsigned(binary_part(str, begin + 4, 4))
-    content = binary_part(str, begin + 8, len)
-    if (begin + len + 8) < String.length(str) do
-      [{log_typ, len, "#{content}"}] ++ logs_parser(str, begin + len + 8)
-    else
-      [{log_typ, len, "#{content}"}]
+        len = :binary.decode_unsigned(binary_part(str, begin + 4, 4))
+        content = binary_part(str, begin + 8, len)
+        #Logger.debug("content: #{inspect content}")
+        if (begin + len + 8) < String.length(str) do
+          [{log_typ, len, "#{content}"}] ++ logs_parser(str, begin + len + 8)
+        else
+          [{log_typ, len, "#{content}"}]
+        end
     end
   end
 
@@ -351,5 +410,16 @@ defmodule WorkflowDsl.Docker do
     #Logger.log(:debug, "#{inspect docker_info}")
     Application.put_env(:docker, :version, "v" <> docker_info["Client"]["DefaultAPIVersion"])
     #Application.put_env(:docker, :host, )
+  end
+
+  defp eval_args(param, func_name) do
+    func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => func_name})
+    cond do
+      is_list(param) -> Enum.map(
+        param, fn to ->
+          Lang.eval(func.session, to)
+        end)
+      true -> [param]
+    end
   end
 end

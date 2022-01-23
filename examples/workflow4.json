@@ -1,0 +1,162 @@
+[
+    {
+        "define_var": {
+            "call": "var.write",
+            "args": {
+                "input_path": "examples/workflow4/contacts.csv",
+                "read_as": "csv"
+            },
+            "result": "contacts"
+        }
+    },
+    {
+        "define": {
+            "assign": [
+                {
+                    "names": "${contacts.name}"
+                },
+                {
+                    "phones": "${contacts.phone}"
+                }
+            ]
+        }
+    },
+    {
+        "build_openwa": {
+            "call": "docker.compose",
+            "args": {
+                "project_name": "autosender",
+                "config_path": "examples/workflow4/docker-compose.yaml",
+                "command": "up",
+                "service": ["browser", "owa"]
+            },
+            "next": "wait_and_sleep"
+        }
+    },
+    {
+        "wait_and_sleep": {
+            "call": "sys.sleep",
+            "args": {
+                "time_in_secs": 15
+            },
+            "next": "get_logs"
+        }
+    },
+    {
+        "get_logs": {
+            "call": "docker.logs",
+            "args": {
+                "id": "autosender_owa_1", 
+                "stderr": true,
+                "stdout": true,
+                "format": "raw"
+            },
+            "result": "owa_logs",
+            "next": "show_qr"
+        }
+    },
+    {
+        "show_qr": {
+            "call": "sys.string",
+            "args": {
+                "input_string": "${owa_logs}",
+                "command": "grep",
+                "match": "https://qr.openwa.cloud",
+                "line_displayed_count": 1
+            },
+            "result": "qr_url",
+            "next": "get_ready"
+        }
+    },
+    {
+        "get_ready": {
+            "call": "sys.string",
+            "args": {
+                "input_string": "${owa_logs}",
+                "command": "grep",
+                "match": "@OPEN-WA ready for account",
+                "line_displayed_count": 1
+            },
+            "result": "open_wa_ready",
+            "next": "check_condition"
+        }
+    },
+    {
+        "check_condition": {
+          "switch": [
+            {
+                "condition": "${len(qr_url) == 0}",
+                "next": "wait_and_sleep"
+            },
+            {
+                "condition": "${open_wa_ready != \"\"}",
+                "next": "send_messages"
+            }
+          ],
+          "next": "exit_loop"
+        }
+    },
+    {
+        "send_messages": {
+            "for": {
+                "value": "name",
+                "in": "${names}",
+                "steps": [
+                    {
+                        "write_message": {
+                            "call": "template.render",
+                            "args": {
+                                "template_path": "examples/workflow4/message.tmpl",
+                                "output_path": "${\"output/workflow4/message\" + string(index) + \".out\"}"
+                            },
+                            "result": "rendered_content"
+                        }
+                    },
+                    {
+                        "send_one_message": {
+                            "call": "http.post",
+                            "args": {
+                                "url": "http://localhost:8080/sendText",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "accept": "*/*"
+                                },
+                                "body": {
+                                    "args":{
+                                        "to": "${phones[index] + \"@c.us\"}",
+                                        "content": "${rendered_content}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "put_to_sleep": {
+                            "call": "sys.sleep",
+                            "args": {
+                                "time_in_secs": 6
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "destroy_openwa": {
+            "call": "docker.compose",
+            "args": {
+                "project_name": "autosender",
+                "config_path": "examples/workflow4/docker-compose.yaml",
+                "command": "down",
+                "service": ["browser", "owa"]
+            },
+            "next": "exit_loop"
+        }
+    },
+    {
+        "exit_loop": {
+            "return": "${qr_url + \" | \" + open_wa_ready}"
+        }
+    }
+]

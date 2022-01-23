@@ -32,6 +32,7 @@ defmodule WorkflowCmd.MixProject do
       {:workflow_dsl, git: "https://github.com/rizki96/workflow_dsl.git"},
       {:solid, "~> 0.10"},
       {:docker, "~> 0.4.0"},
+      {:docker_compose, "~> 0.3"},
       {:bakeware, "~> 0.2.2", runtime: false}
     ]
   end
