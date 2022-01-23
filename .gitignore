@@ -32,3 +32,7 @@ workflow_cmd-*.tar
 /output/
 
 /examples/password.json
+
+docker-compose.yaml
+
+docker-compose.yml

@@ -3,7 +3,7 @@
         "define_var": {
             "call": "var.write",
             "args": {
-                "input_path": "examples/workflow4/contacts.csv",
+                "input_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/contacts.csv",
                 "read_as": "csv"
             },
             "result": "contacts"
@@ -26,7 +26,7 @@
             "call": "docker.compose",
             "args": {
                 "project_name": "autosender",
-                "config_path": "examples/workflow4/docker-compose.yaml",
+                "config_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/docker-compose.yaml",
                 "command": "up",
                 "service": ["browser", "owa"]
             },
@@ -106,7 +106,7 @@
                         "write_message": {
                             "call": "template.render",
                             "args": {
-                                "template_path": "examples/workflow4/message.tmpl",
+                                "template_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/message.tmpl",
                                 "output_path": "${\"output/workflow4/message\" + string(index) + \".out\"}"
                             },
                             "result": "rendered_content"
@@ -147,7 +147,7 @@
             "call": "docker.compose",
             "args": {
                 "project_name": "autosender",
-                "config_path": "examples/workflow4/docker-compose.yaml",
+                "config_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/docker-compose.yaml",
                 "command": "down",
                 "service": ["browser", "owa"]
             },
