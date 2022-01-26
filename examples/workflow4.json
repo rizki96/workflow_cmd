@@ -111,7 +111,7 @@
         "check_condition": {
           "switch": [
             {
-                "condition": "${len(qr_url) == 0 OR len(qr_url_2) == 0}",
+                "condition": "${len(qr_url) == 0 AND len(qr_url_2) == 0}",
                 "next": "wait_and_sleep"
             },
             {
