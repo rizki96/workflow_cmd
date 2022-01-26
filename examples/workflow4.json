@@ -46,7 +46,7 @@
         "get_logs": {
             "call": "docker.logs",
             "args": {
-                "id": "autosender_owa_1", 
+                "id": "autosender-owa-1", 
                 "stderr": true,
                 "stdout": true,
                 "format": "raw"
@@ -65,6 +65,32 @@
                 "line_displayed_count": 1
             },
             "result": "qr_url",
+            "next": "get_logs_2"
+        }
+    },
+    {
+        "get_logs_2": {
+            "call": "docker.logs",
+            "args": {
+                "id": "autosender_owa_1", 
+                "stderr": true,
+                "stdout": true,
+                "format": "raw"
+            },
+            "result": "owa_logs",
+            "next": "show_qr_2"
+        }
+    },
+    {
+        "show_qr_2": {
+            "call": "sys.string",
+            "args": {
+                "input_string": "${owa_logs}",
+                "command": "grep",
+                "match": "https://qr.openwa.cloud",
+                "line_displayed_count": 1
+            },
+            "result": "qr_url_2",
             "next": "get_ready"
         }
     },
@@ -85,7 +111,7 @@
         "check_condition": {
           "switch": [
             {
-                "condition": "${len(qr_url) == 0}",
+                "condition": "${len(qr_url) == 0 OR len(qr_url_2) == 0}",
                 "next": "wait_and_sleep"
             },
             {
