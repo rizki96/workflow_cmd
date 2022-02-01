@@ -91,12 +91,14 @@
     },
     {
         "send_email": {
-          "call": "smtp.send",
+          "call": "mailer.send",
           "args": {
+              "adapter": "SMTP",
               "relay": "smtp.gmail.com",
-              "username": "wfreceiver@gmail.com",
+              "username": "wfreceiver",
               "password": "${password_storage.gmail}",
               "port": 587,
+              "ssl": false,
               "tls": "always",
               "subject": "This is a test",
               "from": "wfreceiver@gmail.com",

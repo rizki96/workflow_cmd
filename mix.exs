@@ -33,6 +33,8 @@ defmodule WorkflowCmd.MixProject do
       {:solid, "~> 0.10"},
       {:docker, "~> 0.4.0"},
       {:docker_compose, "~> 0.3"},
+      {:swoosh, "~> 1.6"},
+      {:gen_smtp, "~> 1.1"},
       {:bakeware, "~> 0.2.2", runtime: false}
     ]
   end

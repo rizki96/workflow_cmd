@@ -420,7 +420,13 @@ defmodule WorkflowDsl.Docker do
     docker_info = docker_cmd |> Jason.decode!()
     #Logger.log(:debug, "#{inspect docker_info}")
     Application.put_env(:docker, :version, "v" <> docker_info["Client"]["DefaultAPIVersion"])
-    #Application.put_env(:docker, :host, )
+    docker_host =
+    case :os.type() do
+      {:unix, _} -> "unix:///var/run/docker.sock"
+      {:win32, _} -> "tcp://127.0.0.1:2375"
+      _ -> "unix:///var/run/docker.sock"
+    end
+    Application.put_env(:docker, :host, docker_host)
   end
 
   defp eval_args(param, func_name) do
