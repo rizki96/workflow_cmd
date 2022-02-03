@@ -51,7 +51,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!--<bugTrackerUrl></bugTrackerUrl>-->
     <tags>workflow_cmd SPACE_SEPARATED</tags>
     <summary>Running the JSON workflow DSL via command-line</summary>
-    <description></description>
+    <description>Execute workflow scripts based on Google Cloud Workflow on your Local Desktop</description>
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!-- =============================== -->
 
