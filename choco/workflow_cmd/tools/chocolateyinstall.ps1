@@ -10,7 +10,7 @@ $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 # Internal packages (organizations) or software that has redistribution rights (community repo)
 # - Use `Install-ChocolateyInstallPackage` instead of `Install-ChocolateyPackage`
 #   and put the binaries directly into the tools folder (we call it embedding)
-#$fileLocation = Join-Path $toolsDir 'NAME_OF_EMBEDDED_INSTALLER_FILE'
+$fileLocation = Join-Path $toolsDir 'workflow_cmd-0.4.0.exe'
 # If embedding binaries increase total nupkg size to over 1GB, use share location or download from urls
 #$fileLocation = '\\SHARE_LOCATION\to\INSTALLER_FILE'
 # Community Repo: Use official urls for non-redist binaries or redist where total package size is over 200MB
@@ -24,7 +24,7 @@ $packageArgs = @{
   fileType      = 'exe' #only one of these: exe, msi, msu
   url           = $url
   #url64bit      = $url64
-  #file         = $fileLocation
+  file         = $fileLocation
 
   softwareName  = 'workflow_cmd*' #part or all of the Display Name as you see it in Programs and Features. It should be enough to be unique
 
