@@ -1,7 +1,6 @@
 ﻿
 VERIFICATION
-Verification is intended to assist the Chocolatey moderators and community
-in verifying that this package's contents are trustworthy.
- 
-<Include details of how to verify checksum contents>
-<If software vendor, explain that here - checksum verification instructions are optional>
+WEBSITE: https://github.com/rizki96/workflow_cmd
+
+FILE: https://github.com/rizki96/workflow_cmd/releases/download/v0.4.0/workflow_cmd-0.4.0.zip
+Checksum SHA256 1921D752323968A17C5F6FAEA0FA4A534231F615C00CCCFF5B64195A80377519
