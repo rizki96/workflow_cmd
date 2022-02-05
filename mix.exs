@@ -43,7 +43,7 @@ defmodule WorkflowCmd.MixProject do
     [
       "release.nix": ["cmd rm -fr _build", "cmd mix release", "cmd tar czvf #{@app}-#{@version}.tar.gz -C _build/prod/rel/bakeware/ #{@app}"], # release for mac, linux and any unix based os
       #"release.win": ["cmd rd /s /q _build", "cmd set MAKE=make", "cmd set CC=gcc", "cmd set MIX_ENV=prod", "cmd mix deps.get", "cmd mix release", "cmd copy _build\\prod\\rel\\bakeware\\#{@app}.exe .\\#{@app}-#{@version}.exe"], # release for win os
-      "release.win": ["cmd set MAKE=make", "cmd set CC=gcc", "cmd set MIX_ENV=prod", "cmd mix deps.get", "cmd mix release", "cmd zip _build\\prod\\rel\\bakeware\\#{@app}.exe .\\#{@app}-#{@version}.zip"], # release for win os
+      "release.win": ["cmd set MAKE=make", "cmd set CC=gcc", "cmd set MIX_ENV=prod", "cmd mix deps.get", "cmd mix release", "cmd zip .\\#{@app}-#{@version}.zip _build\\prod\\rel\\bakeware\\#{@app}.exe"], # release for win os
     ]
   end
 
