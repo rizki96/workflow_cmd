@@ -73,8 +73,8 @@ $ErrorActionPreference = 'Stop'; # stop on all errors
 ##Install-ChocolateyPackage $packageName $fileType $silentArgs $url [$url64 -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64]
 Install-ChocolateyZipPackage -PackageName 'workflow_cmd' `
  -Url 'https://github.com/rizki96/workflow_cmd/releases/download/v0.4.0/workflow_cmd-0.4.0.zip' `
- -UnzipLocation "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
- -Checksum '1921D752323968A17C5F6FAEA0FA4A534231F615C00CCCFF5B64195A80377519'
+ -UnzipLocation "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)" `
+ -Checksum '1921D752323968A17C5F6FAEA0FA4A534231F615C00CCCFF5B64195A80377519' `
  -ChecksumType 'SHA256'
 
 ## Download and unpack a zip file - https://docs.chocolatey.org/en-us/create/functions/install-chocolateyzippackage
