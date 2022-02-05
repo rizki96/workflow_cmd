@@ -130,7 +130,7 @@ Install-ChocolateyPackage @packageArgs # https://docs.chocolatey.org/en-us/creat
 ## Adding a shim when not automatically found - Cocolatey automatically shims exe files found in package directory.
 ## - https://docs.chocolatey.org/en-us/create/functions/install-binfile
 ## - https://docs.chocolatey.org/en-us/create/create-packages#how-do-i-exclude-executables-from-getting-shims
-Install-BinFile
+#Install-BinFile -Name "workflow_cmd"
 
 ##PORTABLE EXAMPLE
 #$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
