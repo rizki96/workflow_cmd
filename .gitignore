@@ -38,3 +38,7 @@ workflow_cmd-*.exe
 docker-compose.yaml
 
 docker-compose.yml
+
+**/*.nupkg
+
+*.zip
