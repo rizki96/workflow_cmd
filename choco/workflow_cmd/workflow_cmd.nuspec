@@ -40,7 +40,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <projectUrl>https://github.com/rizki96/workflow_cmd/</projectUrl>
     <!-- There are a number of CDN Services that can be used for hosting the Icon for a package. More information can be found here: https://docs.chocolatey.org/en-us/create/create-packages#package-icon-guidelines -->
     <!-- Here is an example using Githack -->
-    <!--<iconUrl>http://rawcdn.githack.com/__REPLACE_YOUR_REPO__/master/icons/workflow_cmd.png</iconUrl>-->
+    <iconUrl>https://github.com/rizki96/workflow_cmd/raw/master/choco/workflow_cmd/icons/icons8-module-50.png</iconUrl>
     <copyright>2022</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>https://www.gnu.org/licenses/agpl-3.0.en.html</licenseUrl>
