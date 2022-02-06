@@ -16,7 +16,7 @@
     <projectSourceUrl>https://github.com/rizki96/workflow_cmd</projectSourceUrl>
     <docsUrl>https://github.com/rizki96/workflow_cmd</docsUrl>
     <bugTrackerUrl>https://github.com/rizki96/workflow_cmd/issues</bugTrackerUrl>
-    <tags>workflow_cmd SPACE_SEPARATED</tags>
+    <tags>workflow_cmd workflow_dsl nocodeplatform lowcodeplatform googlecloudworkflow</tags>
     <summary>Running the JSON workflow DSL via command-line</summary>
     <description>Execute workflow scripts based on Google Cloud Workflow on your Local Desktop</description>
     <releaseNotes>https://github.com/rizki96/workflow_cmd/releases/tag/v0.4.0</releaseNotes>
