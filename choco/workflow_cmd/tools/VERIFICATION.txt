@@ -1,6 +1,0 @@
-﻿
-VERIFICATION
-WEBSITE: https://github.com/rizki96/workflow_cmd
-
-FILE: https://github.com/rizki96/workflow_cmd/releases/download/v0.4.0/workflow_cmd-0.4.0.zip
-Checksum SHA256 D8E71419934EF111E428B4C037B19F05272683B8AF08961EFA0CC727A211A2C0
