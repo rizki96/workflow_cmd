@@ -36,6 +36,9 @@
                 },
                 {
                     "email": "${emails[i]}"
+                },
+                {
+                    "attachments": "${array_var.attachment}"
                 }
             ]
         }
@@ -59,6 +62,9 @@
                 },
                 {
                     "email": "${emails[i]}"
+                },
+                {
+                    "attachment": "${attachments[i]}"
                 },
                 {
                     "i": "${i+1}"
@@ -104,7 +110,10 @@
               "from": "wfreceiver@gmail.com",
               "to": "${email}",
               "text": "${rendered_content}",
-              "html": "${rendered_html}"
+              "html": "${rendered_html}",
+              "attachments": [
+                  "${attachment}"
+              ]
           },
           "next": "check_condition"
         }

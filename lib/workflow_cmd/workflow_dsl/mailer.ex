@@ -7,6 +7,8 @@ defmodule WorkflowDsl.Mailer do
   alias WorkflowDsl.Storages
   import Swoosh.Email
 
+  require Logger
+
   def send(params) do
 
     func = Storages.get_last_function_by(%{"module" => __MODULE__, "name" => :send})
@@ -162,6 +164,46 @@ defmodule WorkflowDsl.Mailer do
         _ -> ""
       end
 
+    files =
+      with true <- Map.has_key?(parameters, "attachments") do
+        eval_args(parameters["attachments"])
+      else
+        _ -> []
+      end
+
+    attachments = fn mail, attaches ->
+      Enum.reduce(attaches, nil, fn att, acc ->
+        # check if att http or local
+        {file_path, file_type} =
+        if String.starts_with?(att, ["http://", "https://"]) do
+          {:ok, content} = Req.request(:get, att)
+          File.write!(Path.basename(att), content.body)
+          {Path.basename(att), MIME.from_path(Path.basename(att))}
+        else
+          {att, MIME.from_path(att)}
+        end
+
+        Logger.log(:debug, "#{inspect file_path}, #{inspect file_type}")
+
+        case acc do
+          nil ->
+            attachment(mail, Swoosh.Attachment.new(
+              {:data, File.read!(file_path)},
+              filename: Path.basename(file_path),
+              type: :inline,
+              content_type: file_type
+            ))
+          m ->
+            attachment(m, Swoosh.Attachment.new(
+              {:data, File.read!(file_path)},
+              filename: Path.basename(file_path),
+              type: :inline,
+              content_type: file_type
+            ))
+        end
+      end)
+    end
+
     new()
     |> subject(subject)
     |> from(from)
@@ -170,6 +212,7 @@ defmodule WorkflowDsl.Mailer do
     |> bcc(bcc)
     |> text_body(text)
     |> html_body(html)
+    |> attachments.(files)
   end
 
   defp eval_args(param) do

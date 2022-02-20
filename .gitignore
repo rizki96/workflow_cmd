@@ -44,3 +44,7 @@ docker-compose.yml
 *.zip
 
 .tool-versions
+
+*.png
+
+*.jpg

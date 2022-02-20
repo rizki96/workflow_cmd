@@ -424,7 +424,6 @@ defmodule WorkflowDsl.Docker do
     case :os.type() do
       {:unix, _} -> "unix:///var/run/docker.sock"
       {:win32, _} -> "tcp://127.0.0.1:2375"
-      _ -> "unix:///var/run/docker.sock"
     end
     Application.put_env(:docker, :host, docker_host)
   end

@@ -35,6 +35,7 @@ defmodule WorkflowCmd.MixProject do
       {:docker_compose, git: "https://github.com/rizki96/docker-compose-elixir.git"},
       {:swoosh, "~> 1.6"},
       {:gen_smtp, "~> 1.1"},
+      {:mime, "~> 2.0"},
       {:bakeware, "~> 0.2.2", runtime: false}
     ]
   end

@@ -1,6 +1,6 @@
-name,email
-Receiver1,wfreceiver+addr1@gmail.com
-Receiver2,wfreceiver+addr2@gmail.com
-Receiver3,wfreceiver+addr3@gmail.com
-Receiver4,wfreceiver+addr4@gmail.com
-Receiver5,wfreceiver+addr5@gmail.com
+name,email,attachment
+Receiver1,wfreceiver+addr1@gmail.com,http://dorinestone.com/wp-content/uploads/2017/06/1-U-R58ahr5dtAvtSLGK2wXg-1024x576.png
+Receiver2,wfreceiver+addr2@gmail.com,https://miro.medium.com/max/1400/1*NZo31DBu5DmVYT2Rx7mZSQ.png
+Receiver3,wfreceiver+addr3@gmail.com,https://www.kesiapankerja.com/wp-content/uploads/2020/09/hello-world.jpg
+Receiver4,wfreceiver+addr4@gmail.com,https://d1y8sb8igg2f8e.cloudfront.net/images/shutterstock_1375463840.width-800.jpg
+Receiver5,wfreceiver+addr5@gmail.com,https://prodioco.com/wp-content/uploads/2020/02/001-Agile-Hello-World-1745x872.png
