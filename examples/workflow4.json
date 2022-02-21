@@ -77,7 +77,7 @@
                 "stdout": true,
                 "format": "raw"
             },
-            "result": "owa_logs",
+            "result": "owa_logs_2",
             "next": "show_qr_2"
         }
     },
@@ -85,7 +85,7 @@
         "show_qr_2": {
             "call": "sys.string",
             "args": {
-                "input_string": "${owa_logs}",
+                "input_string": "${owa_logs_2}",
                 "command": "grep",
                 "match": "https://qr.openwa.cloud",
                 "line_displayed_count": 1
@@ -100,10 +100,23 @@
             "args": {
                 "input_string": "${owa_logs}",
                 "command": "grep",
-                "match": "@OPEN-WA ready for account",
+                "match": "OPEN-WA ready",
                 "line_displayed_count": 1
             },
             "result": "open_wa_ready",
+            "next": "get_ready_2"
+        }
+    },
+    {
+        "get_ready_2": {
+            "call": "sys.string",
+            "args": {
+                "input_string": "${owa_logs_2}",
+                "command": "grep",
+                "match": "OPEN-WA ready",
+                "line_displayed_count": 1
+            },
+            "result": "open_wa_ready_2",
             "next": "check_condition"
         }
     },
@@ -115,7 +128,7 @@
                 "next": "wait_and_sleep"
             },
             {
-                "condition": "${open_wa_ready != \"\"}",
+                "condition": "${open_wa_ready != \"\" OR open_wa_ready_2 != \"\"}",
                 "next": "send_messages"
             }
           ],
