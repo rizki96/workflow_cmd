@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>workflow_cmd</id>
-    <version>0.4.0</version>
+    <version>0.4.5</version>
     <packageSourceUrl>https://github.com/rizki96/workflow_cmd/tree/master/choco/workflow_cmd</packageSourceUrl>
     <owners>Iskandar Rizki</owners>
 
