@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $packageArgs = @{
   packageName   = 'workflow_cmd'
-  zipFileName   = 'workflow_cmd-0.4.0.zip'
+  zipFileName   = 'workflow_cmd-0.4.5.zip'
 }
 
 Uninstall-ChocolateyZipPackage -PackageName $packageArgs.packageName `
