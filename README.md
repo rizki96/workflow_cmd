@@ -34,12 +34,13 @@ MacOSX:
 ## Download Binary Executable
 
 - Windows 10 :
-    - mkdir C:\worfklow
-    - cd C:\workflow
+    - > mkdir C:\worfklow
+    - > cd C:\workflow
     - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
-    - unzip workflow_cmd.zip
-    - workflow_cmd
+    - > unzip workflow_cmd.zip
+    - > workflow_cmd
 - MacOSX (M1 Rosetta) :
+    - > brew update
     - > brew install rizki96/wffw/workflow_cmd
     - > workflow_cmd
 
