@@ -7,6 +7,19 @@
 - [x] docker support
 - [ ] command prompt
 
+## Download Binary Executable
+
+- Windows 10 :
+    - > mkdir C:\worfklow
+    - > cd C:\workflow
+    - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
+    - > unzip workflow_cmd.zip
+    - > workflow_cmd
+- MacOSX (M1 Rosetta) :
+    - > brew update
+    - > brew install rizki96/wffw/workflow_cmd
+    - > workflow_cmd
+
 ## Build From Source
 Windows8 / Windows10:
 - install chocolatey
@@ -30,19 +43,6 @@ MacOSX:
 - > mix deps.get
 - > MIX_ENV=prod mix release.mac
 - > ./_build/prod/rel/bakeware/workflow_cmd
-
-## Download Binary Executable
-
-- Windows 10 :
-    - > mkdir C:\worfklow
-    - > cd C:\workflow
-    - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
-    - > unzip workflow_cmd.zip
-    - > workflow_cmd
-- MacOSX (M1 Rosetta) :
-    - > brew update
-    - > brew install rizki96/wffw/workflow_cmd
-    - > workflow_cmd
 
 ## Domain Specific Language
 
