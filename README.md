@@ -36,8 +36,8 @@ MacOSX:
 - Windows 10 :
     - mkdir C:\worfklow
     - cd C:\workflow
-    - download https://github.com/rizki96/workflow_cmd/releases/download/v0.4.5/workflow_cmd-0.4.5.zip and copy the file to C:\workflow
-    - unzip workflow_cmd-0.4.5.zip
+    - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
+    - unzip workflow_cmd.zip
     - workflow_cmd
 - MacOSX (M1 Rosetta) :
     - > brew install rizki96/wffw/workflow_cmd
