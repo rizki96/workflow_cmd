@@ -9,7 +9,7 @@
     <title>workflow_cmd (Install)</title>
     <authors>Iskandar Rizki</authors>
     <projectUrl>https://github.com/rizki96/workflow_cmd/</projectUrl>
-    <iconUrl>https://github.com/rizki96/workflow_cmd/raw/master/choco/workflow_cmd/icons/icons8-module-50.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/rizki96/workflow_cmd/21720966a861623df8847d7998db451678eb867f/choco/workflow_cmd/icons/icons8-module-50.png</iconUrl>
     <copyright>Rizki.App Copyright (c) 2022</copyright>
     <licenseUrl>https://github.com/rizki96/workflow_cmd/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
