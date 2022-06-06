@@ -17,9 +17,6 @@
                 },
                 {
                     "phones": "${contacts.phone}"
-                },
-                {
-                    "mynumber": "6282111111111"
                 }
             ]
         }
@@ -133,10 +130,25 @@
             {
 
                 "condition": "${open_wa_ready != \"\" OR open_wa_ready_2 != \"\"}",
-                "next": "send_messages"
+                "next": "get_me"
             }
           ],
           "next": "exit_loop"
+        }
+    },
+    {
+        "get_me": {
+            "call": "http.post",
+            "args": {
+                "url": "http://localhost:8080/getMe",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "accept": "*/*"
+                },
+                "body": {}
+            },
+            "result": "self_info",
+            "next": "send_messages"
         }
     },
     {
@@ -166,7 +178,7 @@
                                 },
                                 "body": {
                                     "args":{
-                                        "to": "${mynumber + \"@c.us\"}",
+                                        "to": "${self_info.body.response.me._serialized}",
                                         "content": "${rendered_content}"
                                     }
                                 }
