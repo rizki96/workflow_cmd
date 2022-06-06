@@ -37,7 +37,7 @@
         "wait_and_sleep": {
             "call": "sys.sleep",
             "args": {
-                "time_in_secs": 15
+                "time_in_secs": 10
             },
             "next": "get_logs"
         }
@@ -91,9 +91,31 @@
                 "line_displayed_count": 1
             },
             "result": "qr_url_2",
-            "next": "get_ready"
+            "next": "wait_to_be_scanned"
         }
     },
+    {
+        "wait_to_be_scanned": {
+            "call": "sys.sleep",
+            "args": {
+                "time_in_secs": 5
+            },
+            "next": "get_ready_logs"
+        }
+    },
+    {
+        "get_ready_logs": {
+            "call": "docker.logs",
+            "args": {
+                "id": "autosender-owa-1", 
+                "stderr": true,
+                "stdout": true,
+                "format": "raw"
+            },
+            "result": "owa_logs",
+            "next": "get_ready"
+        }
+    },    
     {
         "get_ready": {
             "call": "sys.string",
@@ -104,6 +126,19 @@
                 "line_displayed_count": 1
             },
             "result": "open_wa_ready",
+            "next": "get_ready_logs_2"
+        }
+    },
+    {
+        "get_ready_logs_2": {
+            "call": "docker.logs",
+            "args": {
+                "id": "autosender_owa_1",
+                "stderr": true,
+                "stdout": true,
+                "format": "raw"
+            },
+            "result": "owa_logs_2",
             "next": "get_ready_2"
         }
     },
@@ -132,7 +167,7 @@
                 "next": "send_messages"
             }
           ],
-          "next": "exit_loop"
+          "next": "wait_to_be_scanned"
         }
     },
     {
@@ -178,7 +213,8 @@
                         }
                     }
                 ]
-            }
+            },
+            "next": "destroy_openwa"
         }
     },
     {
@@ -195,7 +231,7 @@
     },
     {
         "exit_loop": {
-            "return": "${qr_url + \" | \" + open_wa_ready}"
+            "return": "${\"| \" + qr_url + \" | \" + open_wa_ready + \" | \" + qr_url_2 + \" | \" + open_wa_ready_2}"
         }
     }
 ]
