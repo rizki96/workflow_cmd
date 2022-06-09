@@ -1,7 +1,7 @@
 [
     {
         "define_var": {
-            "call": "var.write",
+            "call": "file.read",
             "args": {
                 "input_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/contacts.csv",
                 "read_as": "csv"
@@ -201,7 +201,8 @@
                                         "content": "${rendered_content}"
                                     }
                                 }
-                            }
+                            },
+                            "result": "one_message"
                         }
                     },
                     {
