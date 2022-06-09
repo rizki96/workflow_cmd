@@ -24,6 +24,8 @@ workflow_cmd-*.tar
 
 workflow_cmd-*.exe
 
+workflow_cmd
+
 # Temporary files, for example, from tests.
 /tmp/
 
