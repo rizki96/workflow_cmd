@@ -7,7 +7,7 @@ $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation  = $toolsDir
   url = 'https://github.com/rizki96/workflow_cmd/releases/download/v0.4.6/workflow_cmd-0.4.6.zip'
-  checksum = '18F93ABB842E7B58BB0199BDE28EB95B77D48E3275B264BEF010EFDD0CC7884E'
+  checksum = '6DF80709015467080B75CCFC9F0F78D33CA28BDD51A84191D6A633C4F80FC9BF'
   checksumType = 'sha256'
 }
 
