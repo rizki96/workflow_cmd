@@ -42,7 +42,7 @@ defmodule WorkflowCmd.MixProject do
 
   defp aliases do
     [
-      "release.nix": ["cmd rm -fr _build", "cmd mix release", "cmd tar czvf #{@app}-#{@version}.tar.gz -C _build/prod/rel/bakeware/ #{@app}"], # release for mac, linux and any unix based os
+      "release.nix": ["cmd rm -fr _build", "cmd mix release", "cmd tar czvf #{@app}-#{@version}.tar.gz -C _build/prod/rel/bakeware/ #{@app}", "cmd cp #{@app}-#{@version}.tar.gz #{@app}.tar.gz"], # release for mac, linux and any unix based os
       "release.win": ["cmd set MAKE=make", "cmd set CC=gcc", "cmd set MIX_ENV=prod", "cmd mix deps.get", "cmd mix release", "cmd zip -Djr .\\#{@app}-#{@version}.zip _build\\prod\\rel\\bakeware\\#{@app}.exe", "cmd copy .\\#{@app}-#{@version}.zip .\\#{@app}.zip"], # release for win os
       "wf.clean": ["cmd rm *.jpg", "cmd rm *.png", "cmd rm docker-compose.yaml"],
     ]
