@@ -41,7 +41,7 @@ MacOSX:
 - > git clone https://github.com/rizki96/workflow_cmd.git
 - > cd workflow_cmd
 - > mix deps.get
-- > MIX_ENV=prod mix release.mac
+- > MIX_ENV=prod mix release.nix
 - > ./_build/prod/rel/bakeware/workflow_cmd
 
 ## Domain Specific Language
