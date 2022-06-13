@@ -45,8 +45,6 @@
         > mix deps.get
         > MIX_ENV=prod mix release.nix
         > tar -xzvf workflow_cmd.tar.gz
-        > mv workflow_cmd ..
-        > cd ..
         > ./workflow_cmd
       ```
 
