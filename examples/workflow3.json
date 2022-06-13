@@ -106,7 +106,7 @@
               "port": 587,
               "ssl": false,
               "tls": "always",
-              "subject": "This is a test",
+              "subject": "${\"This is a test message for \" + name}",
               "from": "wfreceiver@gmail.com",
               "to": "${email}",
               "text": "${rendered_content}",
