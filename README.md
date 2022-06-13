@@ -12,41 +12,41 @@
 - [ ] command prompt
 
 ## Download Binary Executable
+    - Windows 10 (manually download the workflow_cmd binary) :
+        - create directory for your working space, ex: C:\workflow
+        - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
+        - unzip workflow_cmd.zip on C:\workflow
+        - open command prompt window, try to execute the workflow_cmd file in command prompt 
+            ```console
+            > cd C:\workflow
+            > workflow_cmd
+            ```
 
-- Windows 10 :
-    - > mkdir C:\worfklow
-    - > cd C:\workflow
-    - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
-    - > unzip workflow_cmd.zip
-    - > workflow_cmd
-- MacOSX (M1 Rosetta) :
-    - > brew update
-    - > brew install rizki96/wffw/workflow_cmd
-    - > workflow_cmd
+    - MacOSX (M1 Rosetta) :
+        - install brew (https://brew.sh/)
+        - open comamnd shell, and execute below command :
+            ```console
+            > brew update
+            > brew install rizki96/wffw/workflow_cmd
+            > workflow_cmd
+            ```
 
 ## Build From Source
-Windows8 / Windows10:
-- install chocolatey
-- > choco install -y elixir git zstandard make mingw
-- > git clone https://github.com/rizki96/workflow_cmd.git
-- > cd workflow_cmd
-- > set MAKE=make
-- > set CC=gcc
-- > mix deps.get
-- > mix release.win
-- Copy the binary to C:\ directory:
-- > mkdir c:\workflow
-- > copy _build/prod/rel/bakeware/workflow_cmd C:\workflow
-- > C:\workflow\workflow_cmd
-
-MacOSX:
-- install brew
-- > brew install elixir git zstd
-- > git clone https://github.com/rizki96/workflow_cmd.git
-- > cd workflow_cmd
-- > mix deps.get
-- > MIX_ENV=prod mix release.nix
-- > ./_build/prod/rel/bakeware/workflow_cmd
+  - Linux (generic)
+    - install erlang and elixir (https://elixir-lang.org/install.html)
+    - open command shell, create your working directory on your home directory
+      ```console
+        > mkdir workflow
+        > cd workflow
+        > git clone https://github.com/rizki96/workflow_cmd.git
+        > cd workflow_cmd
+        > mix deps.get
+        > MIX_ENV=prod mix release.nix
+        > tar -xzvf workflow_cmd.tar.gz
+        > mv workflow_cmd ..
+        > cd ..
+        > ./workflow_cmd
+      ```
 
 ## Domain Specific Language
 
