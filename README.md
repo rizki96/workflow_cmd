@@ -12,6 +12,7 @@
 - [ ] command prompt
 
 ## Download Binary Executable
+
     - Windows 10 (manually download the workflow_cmd binary) :
         - create directory for your working space, ex: C:\workflow
         - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
@@ -32,6 +33,7 @@
             ```
 
 ## Build From Source
+
   - Linux (generic)
     - install erlang and elixir (https://elixir-lang.org/install.html)
     - open command shell, create your working directory on your home directory
