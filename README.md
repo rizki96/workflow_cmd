@@ -1,6 +1,10 @@
 # WorkflowCmd
 
-[Workflow DSL](https://github.com/rizki96/workflow_dsl) running as a binary command line, with features : 
+> **workflow_cmd** is a tool to execute your workflow scripts. 
+> The workflow is meant to be a glue to combine many services and APIs. 
+> But unlike any other workflows that being executed on the cloud servers or services, **workflow_cmd** can be executed on your own computers or servers.
+
+*workflow_cmd* utilising [Workflow DSL](https://github.com/rizki96/workflow_dsl) and running as a binary command line, with features : 
 - [x] single binary executable
 - [x] domain specific language based on Google Cloud Workflows
 - [x] template rendering
