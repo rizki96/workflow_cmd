@@ -7,6 +7,6 @@
 The script is following Google Cloud Workflow format. 
 Currently only JSON format is supported. 
 
-You can use many utilities in workflow_cmd scripts to create a working tools for your daily operations. Such as send bulk emails from you list of contacts, send bulk Whatsapp messages to your contacts or non-contacts, and many more to come.
+You can use many utilities in workflow_cmd scripts to create a working tools for your daily operations. Such as send bulk emails from your list of contacts, send bulk Whatsapp messages to your contacts or non-contacts, and many more to come.
 
 [Getting Started](https://github.com/rizki96/workflow_cmd/blob/master/docs/manuals/getting_started.md)
