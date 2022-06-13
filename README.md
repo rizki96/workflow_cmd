@@ -14,23 +14,23 @@
 ## Download Binary Executable
 
     - Windows 10 (manually download the workflow_cmd binary) :
-        - create directory for your working space, ex: C:\workflow
-        - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
-        - unzip workflow_cmd.zip on C:\workflow
-        - open command prompt window, try to execute the workflow_cmd file in command prompt 
-          ```console
-            > cd C:\workflow
-            > workflow_cmd
-          ```
+      - create directory for your working space, ex: C:\workflow
+      - download https://github.com/rizki96/workflow_cmd/releases/latest/download/workflow_cmd.zip and copy the file to C:\workflow
+      - unzip workflow_cmd.zip on C:\workflow
+      - open command prompt window, try to execute the workflow_cmd file in command prompt
+        ```console
+          > cd C:\workflow
+          > workflow_cmd
+        ```
 
     - MacOSX (M1 Rosetta) :
-        - install brew (https://brew.sh/)
-        - open comamnd shell, and execute below command :
-          ```console
-            > brew update
-            > brew install rizki96/wffw/workflow_cmd
-            > workflow_cmd
-          ```
+      - install brew (https://brew.sh/)
+      - open comamnd shell, and execute below command :
+        ```console
+          > brew update
+          > brew install rizki96/wffw/workflow_cmd
+          > workflow_cmd
+        ```
 
 ## Build From Source
 
