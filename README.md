@@ -23,6 +23,14 @@
         > workflow_cmd
       ```
 
+  - Windows 10 (chocolatey) :
+    - install chocolatey (https://chocolatey.org/)
+    - open command prompt window as administrator, execute the following command
+      ```console
+        > choco install workflow_cmd
+        > workflow_cmd
+      ```
+      
   - MacOSX (M1 Rosetta) :
     - install brew (https://brew.sh/)
     - open comamnd shell, and execute below command :
