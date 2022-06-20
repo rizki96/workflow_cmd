@@ -6,8 +6,8 @@ $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation  = $toolsDir
-  url = 'https://github.com/rizki96/workflow_cmd/releases/download/v0.4.6/workflow_cmd-0.4.6.zip'
-  checksum = '6DF80709015467080B75CCFC9F0F78D33CA28BDD51A84191D6A633C4F80FC9BF'
+  url = 'https://github.com/rizki96/workflow_cmd/releases/download/v0.4.8/workflow_cmd-0.4.8.zip'
+  checksum = '163D5699D0554A7350DDCE6920E27134148785A35DD5F51FF5E6FF1969EB7EE9'
   checksumType = 'sha256'
 }
 

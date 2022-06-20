@@ -26,6 +26,8 @@ workflow_cmd-*.exe
 
 workflow_cmd
 
+workflow_cmd.exe
+
 # Temporary files, for example, from tests.
 /tmp/
 
