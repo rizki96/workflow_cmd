@@ -9,7 +9,7 @@
 - [x] domain specific language based on Google Cloud Workflows
 - [x] template rendering
 - [x] docker support
-- [ ] command prompt
+- [ ] command shell
 
 ## Download Binary Executable
 
