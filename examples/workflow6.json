@@ -1,0 +1,92 @@
+[
+    {
+        "define_var": {
+            "call": "file.read",
+            "args": {
+                "input_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow5/contacts.csv",
+                "read_as": "csv"
+            },
+            "result": "contacts"
+        }
+    },
+    {
+        "define": {
+            "assign": [
+                {
+                    "names": "${contacts.name}"
+                },
+                {
+                    "phones": "${contacts.phone}"
+                }
+            ]
+        }
+    },
+    {
+        "get_me": {
+            "call": "http.post",
+            "args": {
+                "url": "http://localhost:8080/getMe",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "accept": "*/*"
+                },
+                "body": {}
+            },
+            "result": "self_info",
+            "next": "send_messages"
+        }
+    },
+    {
+        "send_messages": {
+            "for": {
+                "value": "name",
+                "in": "${names}",
+                "steps": [
+                    {
+                        "write_message": {
+                            "call": "template.render",
+                            "args": {
+                                "template_url": "https://raw.githubusercontent.com/rizki96/workflow_cmd/master/examples/workflow4/message.tmpl",
+                                "output_path": "${\"output/workflow6/message\" + string(index) + \".out\"}"
+                            },
+                            "result": "rendered_content"
+                        }
+                    },
+                    {
+                        "send_one_message": {
+                            "call": "http.post",
+                            "args": {
+                                "url": "http://localhost:8080/sendText",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "accept": "*/*"
+                                },
+                                "body": {
+                                    "args":{
+                                        "to": "${phones[index] + \"@c.us\"}",
+                                        "content": "${rendered_content}"
+                                    }
+                                }
+                            },
+                            "result": "one_message"
+                        }
+                    },
+                    {
+                        "put_to_sleep": {
+                            "call": "sys.sleep",
+                            "args": {
+                                "time_in_secs": 6
+                            }
+                        }
+                    }
+                ]
+            },
+            "next": "exit_loop"
+        }
+    },
+    {
+        "exit_loop": {
+            "return": "The end of Send Messages"
+        }
+    }
+]
