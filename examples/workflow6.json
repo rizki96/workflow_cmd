@@ -86,7 +86,7 @@
     },
     {
         "exit_loop": {
-            "return": "${\"The end of Send Messages to \" + len(names) + \" people\"}"
+            "return": "${len(names)}"
         }
     }
 ]
