@@ -149,7 +149,7 @@ defmodule WorkflowDsl.Docker do
         _ ->
           with true <- Map.has_key?(parameters, "config_url") do
             if String.starts_with?(parameters["config_url"], ["http://", "https://"]) do
-              {:ok, content} = Req.request(:get, parameters["config_url"])
+              {:ok, content} = Req.request(method: :get, url: parameters["config_url"])
               File.write!(Path.basename(parameters["config_url"]), content.body)
               Path.basename(parameters["config_url"])
             else

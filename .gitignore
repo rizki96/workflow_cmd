@@ -20,13 +20,13 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-workflow_cmd-*.tar
+/workflow_cmd-*.tar
 
-workflow_cmd-*.exe
+/workflow_cmd-*.exe
 
-workflow_cmd
+/workflow_cmd
 
-workflow_cmd.exe
+/workflow_cmd.exe
 
 # Temporary files, for example, from tests.
 /tmp/
