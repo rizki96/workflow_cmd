@@ -52,3 +52,5 @@ docker-compose.yml
 *.png
 
 *.jpg
+
+.idea
