@@ -176,7 +176,7 @@ defmodule WorkflowDsl.Mailer do
         # check if att http or local
         {file_path, file_type} =
         if String.starts_with?(att, ["http://", "https://"]) do
-          {:ok, content} = Req.request(:get, att)
+          {:ok, content} = Req.request(method: :get, url: att)
           File.write!(Path.basename(att), content.body)
           {Path.basename(att), MIME.from_path(Path.basename(att))}
         else

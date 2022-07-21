@@ -1,7 +1,7 @@
 defmodule WorkflowCmd.MixProject do
   use Mix.Project
   @app :workflow_cmd
-  @version "0.4.8"
+  @version "0.5.1"
 
   def project do
     [
