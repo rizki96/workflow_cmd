@@ -1,0 +1,45 @@
+{
+    "main": {
+      "steps": [
+        {
+          "call_greet": {
+            "call": "greet_visitor",
+            "args": {
+              "first_name": "Sherlock",
+              "last_name": "Holmes"
+            },
+            "result": "output"
+          }
+        },
+        {
+          "call_greet2": {
+            "call": "greet_visitor",
+            "args": {
+              "first_name": "Ada",
+              "last_name": "Lovelace"
+            },
+            "result": "output2"
+          }
+        },
+        {
+          "return_message": {
+            "return": "${output + \" \" + output2}"
+          }
+        }
+      ]
+    },
+    "greet_visitor": {
+      "params": [
+        "first_name",
+        "last_name",
+        "country: \"England\""
+      ],
+      "steps": [
+        {
+          "prepareMessage": {
+            "return": "${\"Hello \" + first_name + \" \" + last_name + \" from \" + country + \".\"}"
+          }
+        }
+      ]
+    }
+}
