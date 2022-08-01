@@ -45,6 +45,12 @@
                 "messages": []
               },
               {
+                "ids": []
+              },
+              {
+                "friends_count": []
+              },
+              {
                 "key": 0
               }
             ]
@@ -54,7 +60,7 @@
           "check_messages": {
             "call": "http.get",
             "args": {
-                "url": "http://172.30.112.1:3000/users"
+                "url": "http://172.18.80.1:3000/users"
             },
             "result": "incoming_messages"
           }
@@ -83,6 +89,12 @@
                         "messages[key]": "${message.firstname + \" \" + message.lastname}"
                       },
                       {
+                        "ids[key]": "${message.userId}"
+                      },
+                      {
+                        "friends_count[key]": "${len(message.friends)}"
+                      },
+                      {
                         "key": "${key + 1}"
                       }
                     ]
@@ -93,8 +105,23 @@
           }
         },
         {
+          "collect_val": {
+            "assign": [
+              {
+                "info[\"fullname\"]": "${messages}"
+              },
+              {
+                "info[\"id\"]": "${ids}"
+              },
+              {
+                "info[\"friends_count\"]": "${friends_count}"
+              }
+            ]
+          }
+        },
+        {
           "result_messages": {
-            "return": "${messages}"
+            "return": "${info}"
           }
         }
       ]
