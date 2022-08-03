@@ -1,143 +1,188 @@
 {
-    "main": {
-      "steps": [
-        {
-          "call_greet1": {
-            "call": "greet_visitor",
-            "args": {
-              "first_name": "Sherlock",
-              "last_name": "Holmes"
-            },
-            "result": "output1"
-          }
-        },
-        {
-          "call_greet2": {
-            "call": "greet_visitor",
-            "args": {
-              "first_name": "Ada",
-              "last_name": "Lovelace",
-              "country": "USA"
-            },
-            "result": "output2"
-          }
-        },
-        {
-          "check_incoming1": {
-            "call": "check_incoming",
-            "args": {},
-            "result": "msgs"
-          }
-        },
-        {
-          "return_message": {
-            "return": "${msgs}"
-          }
+  "main": {
+    "steps": [
+      {
+        "check_users": {
+          "call": "check_incoming",
+          "args": {},
+          "result": "msgs"
         }
-      ]
-    },
-    "check_incoming": {
-      "steps": [
-        {
-          "init_val": {
-            "assign": [
-              {
-                "messages": []
-              },
-              {
-                "ids": []
-              },
-              {
-                "friends_count": []
-              },
-              {
-                "key": 0
-              }
-            ]
-          }
-        },
-        {
-          "check_messages": {
-            "call": "http.get",
-            "args": {
-                "url": "http://172.18.80.1:3000/users"
+      },
+      {
+        "main_val": {
+          "assign": [
+            {
+              "user_list": []
             },
-            "result": "incoming_messages"
-          }
-        },
-        {
-          "filter_messages": {
-            "for": {
-              "value": "message",
-              "in": "${incoming_messages.body.users}",
-              "steps": [
-                {
-                  "check_condition": {
-                    "switch": [
-                      {
-                          "condition": "${len(message.friends) > 0}",
-                          "next": "save_message"
-                      }
-                    ],
-                    "next": "continue"
-                  }
-                },
-                {
-                  "save_message": {
-                    "assign": [
-                      {
-                        "messages[key]": "${message.firstname + \" \" + message.lastname}"
-                      },
-                      {
-                        "ids[key]": "${message.userId}"
-                      },
-                      {
-                        "friends_count[key]": "${len(message.friends)}"
-                      },
-                      {
-                        "key": "${key + 1}"
-                      }
-                    ]
-                  }
-                }
-              ]
+            {
+              "users_lastname": "${msgs[\"last\"]}"
+            },
+            {
+              "idx": 0
             }
-          }
-        },
-        {
-          "collect_val": {
-            "assign": [
+          ]
+        }
+      },
+      {
+        "loop_messages": {
+          "for": {
+            "value": "msg",
+            "in": "${msgs[\"first\"]}",
+            "steps": [
               {
-                "info[\"fullname\"]": "${messages}"
+                "loop_val": {
+                  "assign": [
+                    {
+                      "user_lastname": "${users_lastname[index]}"
+                    }
+                  ]
+                }
               },
               {
-                "info[\"id\"]": "${ids}"
+                "call_greet1": {
+                  "call": "greet_visitor",
+                  "args": {
+                    "first_name": "${msg[1]}",
+                    "last_name": "${user_lastname}",
+                    "country": "USA"
+                  },
+                  "result": "output"
+                }
               },
               {
-                "info[\"friends_count\"]": "${friends_count}"
+                "save_greet1": {
+                  "assign": [
+                    {
+                      "user_list[idx]": "${output}"
+                    },
+                    {
+                      "idx": "${idx + 1}"
+                    }
+                  ]
+                }
               }
             ]
           }
-        },
-        {
-          "result_messages": {
-            "return": "${info}"
+        }
+      },
+      {
+        "return_messages": {
+          "return": "${user_list}"
+        }
+      }
+    ]
+  },
+  "check_incoming": {
+    "steps": [
+      {
+        "init_val": {
+          "assign": [
+            {
+              "messages1": []
+            },
+            {
+              "messages2": []
+            },
+            {
+              "ids": []
+            },
+            {
+              "friends_count": []
+            },
+            {
+              "key": 0
+            }
+          ]
+        }
+      },
+      {
+        "check_messages": {
+          "call": "http.get",
+          "args": {
+              "url": "http://localhost:3000/users"
+          },
+          "result": "incoming_messages"
+        }
+      },
+      {
+        "filter_messages": {
+          "for": {
+            "value": "message",
+            "in": "${incoming_messages.body.users}",
+            "steps": [
+              {
+                "check_condition": {
+                  "switch": [
+                    {
+                        "condition": "${len(message.friends) > 0}",
+                        "next": "save_message"
+                    }
+                  ],
+                  "next": "continue"
+                }
+              },
+              {
+                "save_message": {
+                  "assign": [
+                    {
+                      "messages1[key]": "${message.firstname}"
+                    },
+                    {
+                      "messages2[key]": "${message.lastname}"
+                    },
+                    {
+                      "ids[key]": "${message.userId}"
+                    },
+                    {
+                      "friends_count[key]": "${len(message.friends)}"
+                    },
+                    {
+                      "key": "${key + 1}"
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
-      ]
-    },
-    "greet_visitor": {
-      "params": [
-        "first_name",
-        "last_name",
-        "country: England"
-      ],
-      "steps": [
-        {
-          "prepare_message": {
-            "return": "${\"Hello \" + first_name + \" \" + last_name + \" from \" + country + \".\"}"
-          }
+      },
+      {
+        "collect_val": {
+          "assign": [
+            {
+              "info[\"first\"]": "${messages1}"
+            },
+            {
+              "info[\"last\"]": "${messages2}"
+            },
+            {
+              "info[\"id\"]": "${ids}"
+            },
+            {
+              "info[\"friends_count\"]": "${friends_count}"
+            }
+          ]
         }
-      ]
-    }
+      },
+      {
+        "result_messages": {
+          "return": "${info}"
+        }
+      }
+    ]
+  },
+  "greet_visitor": {
+    "params": [
+      "first_name",
+      "last_name",
+      "country: England"
+    ],
+    "steps": [
+      {
+        "prepare_message": {
+          "return": "${\"Hello \" + first_name + \" \" + last_name + \" from \" + country + \".\"}"
+        }
+      }
+    ]
+  }
 }
